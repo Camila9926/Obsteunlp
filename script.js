@@ -47,7 +47,7 @@ Object.entries(materiasPorAnio).forEach(([anioId, materias]) => {
 
     btn.onclick = () => {
       const opcion = prompt(
-        `Seleccioná estado para "${materia.nombre}":\n1. ✅ Regular\n2. 📚 Aprobada con final\n3. 🎖️ Promocionada\n4. 📝 Primer parcial\n5. Cancelar`
+        `Seleccioná estado para "${materia.nombre}":\n1. ✅ Regular\n2. 📚 Aprobada con final\n3. 🎖️ Promocionada\n4. 📝 Primer parcial\n5. ❌ Cancelar`
       );
 
       if (opcion === "1") {
