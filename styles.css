@@ -70,6 +70,13 @@ h1 {
   text-decoration: line-through;
 }
 
+.materia.final {
+  background-color: #81D4FA;
+  color: #004D60;
+  text-decoration: line-through;
+  box-shadow: 0 0 8px rgba(129,212,250,0.4);
+}
+
 .materia.promocionada {
   background-color: #BA68C8;
   color: #fff;
@@ -80,13 +87,6 @@ h1 {
 .materia.parcial {
   background-color: #FFF59D;
   text-decoration: underline;
-}
-
-.materia.final {
-  background-color: #81D4FA;
-  color: #004D60;
-  text-decoration: line-through;
-  box-shadow: 0 0 8px rgba(129,212,250,0.4);
 }
 
 #barra-progreso-container {
@@ -112,56 +112,4 @@ h1 {
   text-align: center;
   font-size: 16px;
   color: #880E4F;
-}
-/* Modal personalizado con estética fucsia */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.modal-contenido {
-  background-color: #fff;
-  color: #333;
-  padding: 20px;
-  margin: 15% auto;
-  width: 90%;
-  max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  text-align: center;
-  border: 2px solid #f441a5;
-}
-
-.modal-contenido h3 {
-  color: #f441a5;
-  margin-bottom: 10px;
-}
-
-.botones-modal button {
-  margin: 8px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  background-color: #f441a5;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.botones-modal button:hover {
-  background-color: #db3891;
-}
-
-.cerrar-modal {
-  margin-top: 15px;
-  background-color: #aaa;
-  color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
 }
