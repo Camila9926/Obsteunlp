@@ -113,3 +113,23 @@ h1 {
   font-size: 16px;
   color: #880E4F;
 }
+#leyenda-estados {
+  background-color: #fff0f5;
+  border: 2px dashed #D81B60;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 500px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  color: #6A1B9A;
+}
+
+#leyenda-estados ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#leyenda-estados li {
+  margin: 6px 0;
+  font-size: 15px;
+}
