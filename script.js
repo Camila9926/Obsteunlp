@@ -85,3 +85,16 @@ function actualizarProgreso() {
   barra.value = progreso;
   porcentaje.textContent = `${progreso}%`;
 }
+function mostrarModal() {
+  document.getElementById("modalEstado").style.display = "block";
+}
+
+function cerrarModal() {
+  document.getElementById("modalEstado").style.display = "none";
+}
+
+function guardarEstado(estado) {
+  console.log("Estado seleccionado: " + estado);
+  cerrarModal();
+  // Acá podés agregar código para actualizar el estado de la materia
+}
