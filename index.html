@@ -40,3 +40,16 @@
   <script src="script.js"></script>
 </body>
 </html>
+<!-- Modal personalizado -->
+<div id="modalEstado" class="modal">
+  <div class="modal-contenido">
+    <h3>Seleccionar</h3>
+    <p>Elegí el estado para esta materia:</p>
+    <div class="botones-modal">
+      <button onclick="guardarEstado('Aprobada')">Aprobada</button>
+      <button onclick="guardarEstado('Regular')">Regular</button>
+      <button onclick="guardarEstado('Pendiente')">Pendiente</button>
+    </div>
+    <button class="cerrar-modal" onclick="cerrarModal()">Cerrar</button>
+  </div>
+</div>
