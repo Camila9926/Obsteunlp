@@ -47,7 +47,7 @@ Object.entries(materiasPorAnio).forEach(([anioId, materias]) => {
 
     btn.onclick = () => {
       const opcion = prompt(
-        `Seleccioná estado para "${materia.nombre}":\n1. ✅ Regular\n2. 🎖️ Promocionada\n3. 📝 Primer parcial\n4. Cancelar`
+        `Seleccioná estado para "${materia.nombre}":\n1. ✅ Regular\n2. 📚 Aprobada con final\n3. 🎖️ Promocionada\n4. 📝 Primer parcial\n5. Cancelar`
       );
 
       if (opcion === "1") {
@@ -55,10 +55,14 @@ Object.entries(materiasPorAnio).forEach(([anioId, materias]) => {
         btn.className = "materia regular";
         btn.textContent = `✅ ${materia.nombre}`;
       } else if (opcion === "2") {
+        estado[materia.nombre] = "final";
+        btn.className = "materia final";
+        btn.textContent = `📚 ${materia.nombre}`;
+      } else if (opcion === "3") {
         estado[materia.nombre] = "promocionada";
         btn.className = "materia promocionada";
         btn.textContent = `🎖️ ${materia.nombre}`;
-      } else if (opcion === "3") {
+      } else if (opcion === "4") {
         estado[materia.nombre] = "parcial";
         btn.className = "materia parcial";
         btn.textContent = `📝 ${materia.nombre}`;
@@ -76,7 +80,7 @@ Object.entries(materiasPorAnio).forEach(([anioId, materias]) => {
 
 function actualizarProgreso() {
   const total = Object.keys(estado).length;
-  const completadas = Object.values(estado).filter(v => v === "regular" || v === "promocionada").length;
+  const completadas = Object.values(estado).filter(v => v === "regular" || v === "final" || v === "promocionada").length;
   const progreso = Math.round((completadas / total) * 100);
   barra.value = progreso;
   porcentaje.textContent = `${progreso}%`;
