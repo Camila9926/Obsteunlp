@@ -54,17 +54,13 @@ Object.entries(materiasPorAnio).forEach(([anioId, materias]) => {
     estado[materia.nombre] = null;
 
     btn.onclick = () => {
-      // Cambiar al siguiente estado
       const actual = estado[materia.nombre];
       const indice = estadosVisuales.indexOf(actual);
       const siguiente = estadosVisuales[(indice + 1) % estadosVisuales.length];
       estado[materia.nombre] = siguiente;
 
-      // Resetear clases
       btn.className = "materia";
       if (siguiente) btn.classList.add(siguiente);
-
-      // Actualizar texto con emoji
       btn.textContent = siguiente ? `${emojis[siguiente] || ""} ${materia.nombre}` : materia.nombre;
 
       mensaje.textContent = siguiente
@@ -86,4 +82,4 @@ function actualizarProgreso() {
   const progreso = Math.round((completadas / total) * 100);
   barra.value = progreso;
   porcentaje.textContent = `${progreso}%`;
-}
+        }
