@@ -1,5 +1,5 @@
 body {
-  background-color: #FFE4EC; /* Fondo rosa suave */
+  background-color: #FFE4EC; /* Rosa pastel */
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 20px;
@@ -64,11 +64,22 @@ h1 {
   transform: scale(1.05);
 }
 
-.materia.aprobada {
-  background-color: #CE93D8;
-  color: #6A1B9A;
+/* Estados personalizados */
+.materia.regular {
+  background-color: #F8BBD0;
   text-decoration: line-through;
-  cursor: default;
+}
+
+.materia.promocionada {
+  background-color: #BA68C8;
+  color: #fff;
+  text-decoration: line-through;
+  box-shadow: 0 0 8px rgba(186,104,200,0.5);
+}
+
+.materia.parcial {
+  background-color: #FFF59D;
+  text-decoration: underline;
 }
 
 #barra-progreso-container {
