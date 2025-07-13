@@ -43,24 +43,41 @@ Object.entries(materiasPorAnio).forEach(([anioId, materias]) => {
     const btn = document.createElement("div");
     btn.textContent = materia.nombre;
     btn.className = "materia";
-    estado[materia.nombre] = false;
+    estado[materia.nombre] = null;
 
     btn.onclick = () => {
-      if (!estado[materia.nombre]) {
-        estado[materia.nombre] = true;
-        btn.classList.add("aprobada");
-        btn.textContent = `✓ ${materia.nombre}`;
-        mensaje.textContent = `Aprobaste: ${materia.nombre}`;
+      const opcion = prompt(
+        `Seleccioná estado para "${materia.nombre}":\n1. ✅ Regular\n2. 🎖️ Promocionada\n3. 📝 Primer parcial\n4. Cancelar`
+      );
 
-        // Actualizar progreso
-        const total = Object.keys(estado).length;
-        const completadas = Object.values(estado).filter(v => v).length;
-        const progreso = Math.round((completadas / total) * 100);
-        barra.value = progreso;
-        porcentaje.textContent = `${progreso}%`;
+      if (opcion === "1") {
+        estado[materia.nombre] = "regular";
+        btn.className = "materia regular";
+        btn.textContent = `✅ ${materia.nombre}`;
+      } else if (opcion === "2") {
+        estado[materia.nombre] = "promocionada";
+        btn.className = "materia promocionada";
+        btn.textContent = `🎖️ ${materia.nombre}`;
+      } else if (opcion === "3") {
+        estado[materia.nombre] = "parcial";
+        btn.className = "materia parcial";
+        btn.textContent = `📝 ${materia.nombre}`;
+      } else {
+        return;
       }
+
+      mensaje.textContent = `Estado actualizado: ${materia.nombre}`;
+      actualizarProgreso();
     };
 
     contenedor.appendChild(btn);
   });
 });
+
+function actualizarProgreso() {
+  const total = Object.keys(estado).length;
+  const completadas = Object.values(estado).filter(v => v === "regular" || v === "promocionada").length;
+  const progreso = Math.round((completadas / total) * 100);
+  barra.value = progreso;
+  porcentaje.textContent = `${progreso}%`;
+}
