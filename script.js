@@ -33,6 +33,14 @@ const materiasPorAnio = {
 };
 
 const estado = {};
+const estadosVisuales = ["regular", "final", "promocionada", "parcial", null];
+const emojis = {
+  regular: "✅",
+  final: "📚",
+  promocionada: "🎖️",
+  parcial: "📝"
+};
+
 const mensaje = document.getElementById("mensaje");
 const barra = document.getElementById("barra-progreso");
 const porcentaje = document.getElementById("porcentaje");
@@ -46,31 +54,23 @@ Object.entries(materiasPorAnio).forEach(([anioId, materias]) => {
     estado[materia.nombre] = null;
 
     btn.onclick = () => {
-      const opcion = prompt(
-        `Seleccioná estado para "${materia.nombre}":\n1. ✅ Regular\n2. 📚 Aprobada con final\n3. 🎖️ Promocionada\n4. 📝 Primer parcial\n5. ❌ Cancelar`
-      );
+      // Cambiar al siguiente estado
+      const actual = estado[materia.nombre];
+      const indice = estadosVisuales.indexOf(actual);
+      const siguiente = estadosVisuales[(indice + 1) % estadosVisuales.length];
+      estado[materia.nombre] = siguiente;
 
-      if (opcion === "1") {
-        estado[materia.nombre] = "regular";
-        btn.className = "materia regular";
-        btn.textContent = `✅ ${materia.nombre}`;
-      } else if (opcion === "2") {
-        estado[materia.nombre] = "final";
-        btn.className = "materia final";
-        btn.textContent = `📚 ${materia.nombre}`;
-      } else if (opcion === "3") {
-        estado[materia.nombre] = "promocionada";
-        btn.className = "materia promocionada";
-        btn.textContent = `🎖️ ${materia.nombre}`;
-      } else if (opcion === "4") {
-        estado[materia.nombre] = "parcial";
-        btn.className = "materia parcial";
-        btn.textContent = `📝 ${materia.nombre}`;
-      } else {
-        return;
-      }
+      // Resetear clases
+      btn.className = "materia";
+      if (siguiente) btn.classList.add(siguiente);
 
-      mensaje.textContent = `Estado actualizado: ${materia.nombre}`;
+      // Actualizar texto con emoji
+      btn.textContent = siguiente ? `${emojis[siguiente] || ""} ${materia.nombre}` : materia.nombre;
+
+      mensaje.textContent = siguiente
+        ? `Estado actualizado: ${materia.nombre}`
+        : `Estado borrado: ${materia.nombre}`;
+
       actualizarProgreso();
     };
 
@@ -80,21 +80,10 @@ Object.entries(materiasPorAnio).forEach(([anioId, materias]) => {
 
 function actualizarProgreso() {
   const total = Object.keys(estado).length;
-  const completadas = Object.values(estado).filter(v => v === "regular" || v === "final" || v === "promocionada").length;
+  const completadas = Object.values(estado).filter(v =>
+    v === "regular" || v === "final" || v === "promocionada"
+  ).length;
   const progreso = Math.round((completadas / total) * 100);
   barra.value = progreso;
   porcentaje.textContent = `${progreso}%`;
-}
-function mostrarModal() {
-  document.getElementById("modalEstado").style.display = "block";
-}
-
-function cerrarModal() {
-  document.getElementById("modalEstado").style.display = "none";
-}
-
-function guardarEstado(estado) {
-  console.log("Estado seleccionado: " + estado);
-  cerrarModal();
-  // Acá podés agregar código para actualizar el estado de la materia
 }
