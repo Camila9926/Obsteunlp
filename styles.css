@@ -1,5 +1,5 @@
 body {
-  background-color: #FFE4EC; /* Rosa pastel */
+  background-color: #FFE4EC;
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 20px;
@@ -80,6 +80,13 @@ h1 {
 .materia.parcial {
   background-color: #FFF59D;
   text-decoration: underline;
+}
+
+.materia.final {
+  background-color: #81D4FA;
+  color: #004D60;
+  text-decoration: line-through;
+  box-shadow: 0 0 8px rgba(129,212,250,0.4);
 }
 
 #barra-progreso-container {
